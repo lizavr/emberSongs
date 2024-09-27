@@ -1,0 +1,23 @@
+{{page-title this.model.name " details | Rock & Roll with Octane" replace=true}}
+<label for="details" class="block mb-4 text-lg">{{this.model.name}}</label>
+<textarea
+  name="details"
+  id="details"
+  class="p-6 bg-blue-900 text-gray-100 w-full h-full hover:cursor-pointer hover:outline hover:outline-1 focus:outline focus:outline-white focus:outline-1"
+  value={{this.model.description}}
+  {{on "input" this.updateDescription}}
+></textarea>
+
+<button
+  class="block px-4 py-2 rounded shadow-md hover:shadow-lg hover:text-white
+    {{if this.notChanged 'bg-purple-500' 'bg-purple-600'}}"
+  type="button"
+  disabled={{this.notChanged}}
+  {{on "click" this.saveDescription}}
+>{{t "saveBtn"}}</button>
+
+{{!-- {{#if this.showMessage}}
+  <div>
+    {{this.messageText}}
+  </div>
+{{/if}} --}}

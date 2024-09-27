@@ -1,0 +1,26 @@
+<ul class="pl-2 pr-8">
+  {{#each this.bands as |item|}}
+    <li
+      class="flex justify-between items-center mb-2"
+      data-test-rr="band-list-item"
+    >
+      <LinkTo
+        class={{if item.isActive "border-purple-400 border-l-4 pl-2"}}
+        @route="bands.band"
+        @model={{item.band.id}}
+        data-test-rr="band-link"
+      >
+        {{capitalize item.band.name}}
+      </LinkTo>
+
+      <button
+        type="submit"
+        class="inline-block ml-2 mt-2 p-2 rounded bg-purple-600 shadow-md hover:shadow-lg hover:text-white hover:bg-purple-500 focus:outlinenone"
+        data-test-rr="del-band-button"
+        {{on "click" (fn @deleteBandFunc item.band.id)}}
+      >
+        {{t "removeBtn"}}
+      </button>
+    </li>
+  {{/each}}
+</ul>
